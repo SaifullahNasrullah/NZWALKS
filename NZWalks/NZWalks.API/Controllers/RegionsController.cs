@@ -10,12 +10,12 @@ namespace NZWalks.API.Controllers
     public class RegionsController : Controller
     {
         private readonly IRegionRepository _regionRepository;
-        private readonly IMapper mapper;
+        private readonly IMapper _mapper;
 
         public RegionsController(IRegionRepository regionRepository, IMapper mapper)
         {
             _regionRepository = regionRepository;
-            this.mapper = mapper;
+            _mapper = mapper;
         }
         [HttpGet]
         public async Task<IActionResult> GetAllRegions()
@@ -41,7 +41,7 @@ namespace NZWalks.API.Controllers
                 };
                 regionDTO.Add(region);
             });*/
-            var regionsWithAutoMapper = mapper.Map<List<Models.DTO.Region>>(regionsDb);
+            var regionsWithAutoMapper = _mapper.Map<List<Models.DTO.Region>>(regionsDb);
             return Ok(regionsWithAutoMapper);
         }
 
@@ -54,7 +54,7 @@ namespace NZWalks.API.Controllers
             if (regionDb == null)
                 return NotFound();
 
-            var regionWithAutoMapper = mapper.Map<List<Models.DTO.Region>>(regionDb);
+            var regionWithAutoMapper = _mapper.Map<List<Models.DTO.Region>>(regionDb);
             return Ok(regionWithAutoMapper);
         }
 
