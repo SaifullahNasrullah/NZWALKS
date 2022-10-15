@@ -21,7 +21,7 @@ namespace NZWalks.API.Repositories
         }
         public async Task<WalkDifficulty> AddWalkDifficultyAsync(WalkDifficulty walkDifficulty)
         {
-            walkDifficulty.Id = walkDifficulty.Id;
+            walkDifficulty.Id = Guid.NewGuid();
             await _nZWalksDbContext.AddAsync(walkDifficulty);
             await _nZWalksDbContext.SaveChangesAsync();
             return walkDifficulty;
