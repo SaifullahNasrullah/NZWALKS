@@ -65,9 +65,14 @@ namespace NZWalks.API.Controllers
             //Pass details to repository
             //Convert back to DTO
 
-            //validate the request
-            if(!ValidateAddRegionAsync(addRegionRequest))
-                return BadRequest(ModelState);
+            //Manual Validation request
+
+            /*if(!ValidateAddRegionAsync(addRegionRequest))
+                return BadRequest(ModelState);*/
+
+            //Now we are using FluentValidator don't need to come even to method
+            //if the requirements are not valid 
+
             var domainReg = new Models.Domain.Region
             {
                 Code = addRegionRequest.Code,
@@ -122,9 +127,12 @@ namespace NZWalks.API.Controllers
         public async Task<IActionResult> UpdateRegionAsync([FromRoute]Guid id, 
                                     [FromBody]Models.DTO.UpdateRegionRequest updateRegionRequest)
         {
-            //Validate Request
-            if (!ValidateUpdateRegionAsync(updateRegionRequest))
-                return BadRequest(ModelState);
+            //Manual Validate Request
+            /*if (!ValidateUpdateRegionAsync(updateRegionRequest))
+                return BadRequest(ModelState);*/
+
+            //Now we are using FluentValidator don't need to come even to method
+            //if the requirements are not valid 
 
             var domainRequest = new Region
             { 

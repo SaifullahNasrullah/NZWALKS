@@ -140,7 +140,8 @@ namespace NZWalks.API.Controllers
                     $"Add data can not be null or empty !");
                 return false;
             }
-            if(string.IsNullOrEmpty(addWalkRequest.Name))
+            //This parts will be validated by Fluent Validator
+            /*if(string.IsNullOrEmpty(addWalkRequest.Name))
             {
                 ModelState.AddModelError(nameof(addWalkRequest.Name),
                     $"{addWalkRequest.Name} can not be null");
@@ -149,7 +150,7 @@ namespace NZWalks.API.Controllers
             {
                 ModelState.AddModelError(nameof(addWalkRequest.Length),
                     $"{addWalkRequest.Length} can not be smaller or equal to 0 !");
-            }
+            }*/
             var region = await _regionRepository.GetRegionByIdAsync(addWalkRequest.RegionId);
             if(region == null)
             {
@@ -175,7 +176,9 @@ namespace NZWalks.API.Controllers
                     $"Add data can not be null or empty !");
                 return false;
             }
-            if (string.IsNullOrEmpty(updateWalkRequest.Name))
+            //This parts will be validated by Fluent Validator
+
+            /*if (string.IsNullOrEmpty(updateWalkRequest.Name))
             {
                 ModelState.AddModelError(nameof(updateWalkRequest.Name),
                     $"{updateWalkRequest.Name} can not be null");
@@ -184,7 +187,7 @@ namespace NZWalks.API.Controllers
             {
                 ModelState.AddModelError(nameof(updateWalkRequest.Length),
                     $"{updateWalkRequest.Length} can not be smaller or equal to 0 !");
-            }
+            }*/
             var region = await _regionRepository.GetRegionByIdAsync(updateWalkRequest.RegionId);
             if (region == null)
             {

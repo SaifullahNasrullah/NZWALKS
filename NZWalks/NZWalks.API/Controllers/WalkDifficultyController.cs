@@ -38,8 +38,11 @@ namespace NZWalks.API.Controllers
         [HttpPost]
         public async Task<IActionResult> AddWalkDifficutyAsync(Models.DTO.AddWalkDifficultyRequest addWalkDifficultyRequest)
         {
-            if (!ValidateAddWalkDifficultyAsync(addWalkDifficultyRequest))
-                return BadRequest(ModelState);
+            //Manual Validation
+            /*if (!ValidateAddWalkDifficultyAsync(addWalkDifficultyRequest))
+                return BadRequest(ModelState);*/
+
+            //Manual Validation commented because now it using Fluent validator.
 
             var walkDifficulty = new Models.Domain.WalkDifficulty()
             {
@@ -54,8 +57,11 @@ namespace NZWalks.API.Controllers
         public async Task<IActionResult> UpdateWalkDifficultyAsync([FromBody] Models.DTO.UpdateWalkDifficultyRequest updateWalkDifficultyRequest,
             [FromRoute] Guid id)
         {
-            if (!ValidateUpdateWalkDifficultyAsync(updateWalkDifficultyRequest))
-                return BadRequest(ModelState);
+            //Manual Validation
+            /*if (!ValidateUpdateWalkDifficultyAsync(updateWalkDifficultyRequest))
+                return BadRequest(ModelState);*/
+
+            //Manual Validation commented because now it using Fluent validator.
             var walkDiffDb = new Models.Domain.WalkDifficulty
             {
                 Code = updateWalkDifficultyRequest.Code,
